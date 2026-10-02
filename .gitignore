@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+*.zip
+sample-risky-project/
+.env
+.env.*
+!.env.example
+secrets.json
+secrets.yaml
+secrets.yml

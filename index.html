@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Check whether an exported Replit project is ready to deploy elsewhere. Files stay in your browser.">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'none'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'self' blob:; base-uri 'none'; form-action 'self'">
+    <title>Escape Hatch — Replit migration readiness audit</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="#">Escape Hatch <span>beta</span></a>
+      <div class="privacy">Local-only audit · no upload · <a href="privacy.html">privacy</a></div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Before you cancel Replit</p>
+        <h1>Find what will break<br>when you move your app.</h1>
+        <p class="lede">Select an exported project folder. Escape Hatch checks the stack, commands, environment keys, databases, and Replit-specific dependencies entirely in your browser.</p>
+      </section>
+
+      <section id="empty">
+        <input id="folder" type="file" webkitdirectory multiple hidden>
+        <input id="zip" type="file" accept=".zip,application/zip" hidden>
+        <div id="drop" class="drop" role="button" tabindex="0">
+          <div class="drop-icon">↗</div>
+          <strong>Select your exported project folder</strong>
+          <span>or drop a project ZIP here</span>
+          <small>Secret values are never displayed or transmitted.</small>
+        </div>
+        <div class="quick-actions">
+          <button id="demo" class="secondary">Try a risky demo project</button>
+          <button id="choose-zip" class="secondary" type="button">Choose ZIP instead</button>
+        </div>
+      </section>
+
+      <section id="results" hidden>
+        <div class="score-card">
+          <div class="score"><span id="score">0</span><small>/100</small></div>
+          <div><p class="eyebrow">Migration readiness</p><h2 id="summary"></h2></div>
+        </div>
+
+        <div class="facts">
+          <div><span>Detected stack</span><strong id="stack"></strong></div>
+          <div><span>Files inspected</span><strong id="count"></strong></div>
+          <div><span>Environment keys</span><strong id="env-count"></strong></div>
+          <div><span>Suggested targets</span><strong id="targets"></strong></div>
+        </div>
+
+        <div class="report">
+          <div class="report-head"><p class="eyebrow">Portability findings</p><button id="download" class="link">Download report</button></div>
+          <ul id="findings"></ul>
+        </div>
+
+        <div class="actions">
+          <button id="upgrade" class="primary" type="button">Generate repaired deploy package</button>
+          <button id="reset" class="secondary" type="button">Audit another project</button>
+        </div>
+      </section>
+
+      <section class="explain">
+        <div><span>01</span><h3>Private by design</h3><p>Your source files are read locally. There is no upload endpoint in this prototype.</p></div>
+        <div><span>02</span><h3>Evidence, not promises</h3><p>The report identifies likely blockers. Only a real build and deployment can prove portability.</p></div>
+        <div><span>03</span><h3>No credentials</h3><p>Never enter a Replit password or paste secret values into this tool or a support request.</p></div>
+      </section>
+    </main>
+
+    <dialog id="beta">
+      <form id="beta-form">
+        <button class="close" type="button" aria-label="Close">×</button>
+        <p class="eyebrow">Private beta</p>
+        <h2>Repair is not available yet.</h2>
+        <p>This button measures demand before we build the deployment repair flow. No payment or account is required.</p>
+        <label>What would you want fixed first?<textarea id="beta-answer" placeholder="Example: move my database and deploy to Railway"></textarea></label>
+        <button class="primary" type="submit">Save feedback locally</button>
+        <small>The current prototype does not transmit this response.</small>
+      </form>
+    </dialog>
+
+    <dialog id="notice">
+      <form method="dialog">
+        <button class="close" aria-label="Close">×</button>
+        <p class="eyebrow">Saved on this device</p>
+        <h2>Thank you — no data was sent.</h2>
+        <p>When a public beta endpoint is connected, this step will explicitly ask before transmitting an email or message.</p>
+        <button class="primary">Close</button>
+      </form>
+    </dialog>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
