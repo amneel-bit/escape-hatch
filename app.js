@@ -144,7 +144,6 @@ reset.addEventListener('click', () => {
 });
 
 upgrade.addEventListener('click', () => {
-  localStorage.setItem('escape-hatch-upgrade-clicked', new Date().toISOString());
   document.querySelector('#beta').showModal();
 });
 
@@ -162,16 +161,5 @@ demo.addEventListener('click', () => {
 
 document.querySelector('#beta-form').addEventListener('submit', (event) => {
   event.preventDefault();
-  const answer = document.querySelector('#beta-answer').value.trim();
-  let entries = [];
-  try {
-    const saved = JSON.parse(localStorage.getItem('escape-hatch-beta-feedback') || '[]');
-    if (Array.isArray(saved)) entries = saved.slice(-49);
-  } catch {
-    // Ignore malformed local-only data and replace it with a clean list.
-  }
-  entries.push({ answer, createdAt: new Date().toISOString() });
-  localStorage.setItem('escape-hatch-beta-feedback', JSON.stringify(entries));
-  document.querySelector('#beta').close();
-  document.querySelector('#notice').showModal();
+  window.location.assign('https://github.com/amneel-bit/escape-hatch/issues/new?template=migration-request.yml');
 });

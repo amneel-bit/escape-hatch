@@ -1,0 +1,59 @@
+name: Free migration plan request
+description: Request a high-level plan for moving an exported Replit project.
+title: "Migration plan: "
+labels:
+  - migration-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please share only non-sensitive technical details. **Do not attach source code, project archives, credentials, `.env` files, customer data, private URLs, or secret values.** This issue will be public.
+  - type: dropdown
+    id: stack
+    attributes:
+      label: Main stack
+      options:
+        - Node.js / Express
+        - React / Vite
+        - Next.js
+        - Python / Django / Flask
+        - Other / not sure
+    validations:
+      required: true
+  - type: dropdown
+    id: state
+    attributes:
+      label: Current state
+      options:
+        - Runs only inside Replit
+        - Exported but does not run locally
+        - Runs locally but deployment fails
+        - Deployed elsewhere but database/auth/storage is broken
+        - Planning the move
+    validations:
+      required: true
+  - type: checkboxes
+    id: services
+    attributes:
+      label: Services used
+      options:
+        - label: Database
+        - label: Authentication
+        - label: File/object storage
+        - label: Scheduled jobs or workers
+        - label: Custom domain
+  - type: textarea
+    id: blocker
+    attributes:
+      label: Main blocker
+      description: Describe symptoms and goals without sharing private data.
+      placeholder: Example: Express API uses Replit Database and I want to deploy it to Railway with Supabase.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety confirmation
+      options:
+        - label: I have not included source code, credentials, customer data, private URLs, or secret values.
+          required: true

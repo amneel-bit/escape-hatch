@@ -21,7 +21,7 @@ npm test
 - Project folders and ZIP files are parsed in the browser.
 - There is no backend or upload endpoint.
 - Secret values are never displayed in the report.
-- Beta feedback is stored in browser local storage and is not transmitted.
+- Migration-plan requests open a clearly disclosed public GitHub issue; nothing is submitted automatically.
 
 ## Static deployment
 

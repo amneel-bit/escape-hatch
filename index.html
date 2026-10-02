@@ -56,7 +56,7 @@
         </div>
 
         <div class="actions">
-          <button id="upgrade" class="primary" type="button">Generate repaired deploy package</button>
+          <button id="upgrade" class="primary" type="button">Request a migration plan</button>
           <button id="reset" class="secondary" type="button">Audit another project</button>
         </div>
       </section>
@@ -71,22 +71,11 @@
     <dialog id="beta">
       <form id="beta-form">
         <button class="close" type="button" aria-label="Close">×</button>
-        <p class="eyebrow">Private beta</p>
-        <h2>Repair is not available yet.</h2>
-        <p>This button measures demand before we build the deployment repair flow. No payment or account is required.</p>
-        <label>What would you want fixed first?<textarea id="beta-answer" placeholder="Example: move my database and deploy to Railway"></textarea></label>
-        <button class="primary" type="submit">Save feedback locally</button>
-        <small>The current prototype does not transmit this response.</small>
-      </form>
-    </dialog>
-
-    <dialog id="notice">
-      <form method="dialog">
-        <button class="close" aria-label="Close">×</button>
-        <p class="eyebrow">Saved on this device</p>
-        <h2>Thank you — no data was sent.</h2>
-        <p>When a public beta endpoint is connected, this step will explicitly ask before transmitting an email or message.</p>
-        <button class="primary">Close</button>
+        <p class="eyebrow">Free migration plan</p>
+        <h2>Tell us what needs to move.</h2>
+        <p>This opens a public GitHub issue. Describe only the stack and blocker—never attach source code, credentials, customer data, or secret values.</p>
+        <button class="primary" type="submit">Continue to GitHub</button>
+        <small>A GitHub account is required. Nothing is sent until you submit the issue on GitHub.</small>
       </form>
     </dialog>
 
